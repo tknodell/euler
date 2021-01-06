@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 const (
-	maxNum = 100
+	maxNum = 1000000
 )
 
 func calc(n int) int {
@@ -24,7 +24,16 @@ func getChainLength(n int) int {
 }
 
 func main() {
+	var num, maxChainLength int
+
 	for i := 1; i < maxNum; i++ {
-		fmt.Println(i, getChainLength(i))
+		chainLength := getChainLength(i)
+		if chainLength > maxChainLength {
+			maxChainLength = chainLength
+			num = i
+		}
 	}
+
+	fmt.Println("----")
+	fmt.Println(num, maxChainLength)
 }
