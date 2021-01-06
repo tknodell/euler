@@ -3,8 +3,7 @@ package main
 import "fmt"
 
 const (
-	startNum = 13
-	maxNum   = 10
+	maxNum = 100
 )
 
 func calc(n int) int {
@@ -15,11 +14,17 @@ func calc(n int) int {
 	}
 }
 
-func main() {
-	var res int = startNum
+func getChainLength(n int) int {
+	var chainLength int = 1 // Include original number
+	for n != 1 {
+		n = calc(n)
+		chainLength++
+	}
+	return chainLength
+}
 
-	for i := startNum; i < startNum+maxNum; i++ {
-		fmt.Println(res)
-		res = calc(res)
+func main() {
+	for i := 1; i < maxNum; i++ {
+		fmt.Println(i, getChainLength(i))
 	}
 }
